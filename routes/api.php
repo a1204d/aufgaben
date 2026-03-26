@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Book;
+use App\Http\Controllers\AreaController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('responder')->group(function () {
@@ -88,5 +88,15 @@ Route::prefix('/relationsheep')->group(function () {
     Route::controller(\App\Http\Controllers\TopicController::class)->group(function () {
         Route::get('/topics/{slug}/posts', 'posts')->where('slug', '[a-z0-9-]+');
         Route::get('/topics', 'index');
+    });
+});
+
+Route::prefix('/ackerer')->group(function () {
+    Route::controller(\App\Http\Controllers\PlantController::class)->group(function () {
+        Route::get('/plants', 'index');
+        Route::get('/plants/{id}', 'show');
+    });
+    Route::controller(AreaController::class)->group(function () {
+        Route::get('/areas', 'index');
     });
 });
