@@ -6,5 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Plant extends Model
 {
-    //
+    public function areas() {
+        return $this->hasMany(Area::class);
+    }
 }
