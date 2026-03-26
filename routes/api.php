@@ -100,3 +100,9 @@ Route::prefix('/ackerer')->group(function () {
         Route::get('/areas', 'index');
     });
 });
+
+Route::prefix('k-rest-y')->controller(ClownController::class)->group(function () {
+    Route::get('/clowns', 'index');
+    Route::delete('/clowns/{id}', 'remove')->whereNumber('id');
+    Route::post('/clowns', 'store');
+});
